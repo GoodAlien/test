@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico" type="images/x-icon">
+
+
+<script src="js/jquery v3.3.1.js"></script>
+<script src="js/vegas.min.js"></script>
+<link rel="stylesheet" href="css/vegas.css">
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!-- Add custom CSS here -->
+    <link href="css/slidefolio.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+<!-- Очищаем iframe после закрытия -->
+<script>
+$(document).ready(function(){
+    $('.modal').each(function(){
+            var src = $(this).find('iframe').attr('src');
+
+        $(this).on('click', function(){
+
+            $(this).find('iframe').attr('src', '');
+            $(this).find('iframe').attr('src', src);
+
+        });
+    });
+});
+</script>
+
+<!-- Отправляем контактную форму без редиректа -->
+<script>
+$(function() {
+ $('form').submit(function(e) {
+    var $form = $(this);
+      $.ajax({
+      type: $form.attr('method'),
+      url: $form.attr('action'),
+      data: $form.serialize()
+      })
+    .done(function() {
+      // Показываем подтверждение отправки.
+      $('.popup').show();
+      $('.popup').fadeIn('slow');
+      //  setTimeout(function() {
+      // $(".overlay").fadeOut();
+      // }, 1500);
+      // Timeout 6sec.
+    setTimeout(function() {
+      $(".popup").fadeOut();
+      }, 6000);
+      // Очишаем форму.
+      $("#contact-form").trigger("reset");
+          // $("#name").val("");
+          // console.log('success');
+          // document.write("Привет Мир!");
+          // alert('Email Sent');
+      })
+    .fail(function() {
+          console.log('fail');
+        });
+        //отмена действия по умолчанию для кнопки Submit.
+        e.preventDefault(); 
+      });
+    });
+</script>
+
+    <title>GK Studio</title>
+    
+  </head>
+  <body>
+    
+<div id="top" class="header"><!-- Header Area -->
+   <div class="shadow"></div><!-- Затемнение верхней части при скролле -->
+<div class="vert-text">
+	  <img class="img-rounded" alt="Company Logo" src="./img/GK Studio.png"/>
+        <h2><em>Video Editing Service</em></h2>
+		       <ul class="list-inline">
+              <li><a href="https://www.facebook.com/sharer/sharer.php?u=gkstudio.pro"><i class="fa fa-facebook fa-3x"></i></a></li>
+              <li><a href="https://twitter.com/share?url=gkstudio.pro&text=Video Editing Service"><i class="fa fa-twitter fa-3x"></i></a></li>
+              <li><a href="https://plus.google.com/share?url=gkstudio.pro"><i class="fa fa-google-plus fa-3x"></i></a></li>
+              <li><a href="https://www.linkedin.com/sharer/sharer.php?u=gkstudio.pro"><i class="fa fa-linkedin fa-3x"></i></a></li>
+              <li><a href="http://pinterest.com/pin/create/button/?url=gkstudio.pro&media=[IMAGE]&description=[DESC]"><i class="fa fa-pinterest fa-3x"></i></a></li>
+           </ul>	
+			<br>
+			<a href="#about" class="btn btn-top">Learn More</a>
+
+
+<div id="nav"><!-- Navigation -->
+<nav class="navbar navbar-new" role="navigation">
+  <div class="container">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mobilemenu">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+  <a href="#" class="navbar-brand">GK Studio</a>
+  </div>
+  <div class="collapse navbar-collapse" id="mobilemenu">
+
+    <ul class="nav navbar-nav navbar-right text-center">
+      <li><a href="#top"><i class="service-icon fa fa-home"></i>&nbsp;Home</a></li>
+        <li><a href="#about"><i class="service-icon fa fa-info"></i>&nbsp;About</a></li>
+        <li><a href="#services"><i class="service-icon fa fa-laptop"></i>&nbsp;Services</a></li>
+        <li><a href="#portfolio"><i class="service-icon fa fa-camera"></i>&nbsp;Portfolio</a></li>
+        <li><a href="#contact"><i class="service-icon fa fa-envelope"></i>&nbsp;Contact</a></li>
+    </ul>
+  </div><!-- /navbar-collapse -->
+  </div><!-- /container -->
+</nav><!-- /navigation -->   
+</div><!-- /nav -->
+
+</div><!-- /Header Area -->
+</div><!-- /Header Area -->
+
+
+
+
+
+ <!-- Portfolio -->
+    <div id="portfolio" class="portfolio">
+    <div class="container">
+    <div class="row push50">
+    <div class="col-md-4 col-md-offset-4 text-center">
+    <h2>Our Works</h2>
+  <h3>
+  <span class="filter label label-default" data-filter="all">ALL</span>
+  <span class="filter label label-default" data-filter="wedding">Wedding</span>
+  <!-- <span class="filter label label-default" data-filter="other">Wedding's Short Video</span> -->
+  <span class="filter label label-default" data-filter="birthday">Birthday</span>
+  <span class="filter label label-default" data-filter="promo">Promo</span>
+  </h3>
+            <hr>
+    </div>
+    </div>
+    
+    <div class="row">
+    
+    <div class="gallery">
+    
+    <ul id="Grid" class="gcontainer">
+            <li class="col-md-4 col-sm-4 col-xs-12 mix wedding" data-cat="graphics">
+              <a data-toggle="modal" data-target="#wedding1" class="mix-cover">
+                <img class="horizontal" src="img/M&I_b.jpg" alt="placeholder">
+                <span class="overlay"><span class="valign"></span><span class="title">Meghry & Ilia</span></span>
+              </a>                
+            </li>
+            <li class="col-md-4 col-sm-4 col-xs-12 mix wedding" data-cat="graphics">
+                <a data-toggle="modal" data-target="#wedding2" class="mix-cover">
+                  <img class="horizontal" src="img/L&A_b.jpg" alt="placeholder">
+                  <span class="overlay"><span class="valign"></span><span class="title">Loucy & Anderson</span></span>
+                </a>                
+            </li>
+        <li class="col-md-4 col-sm-4 col-xs-12 mix wedding" data-cat="nature">
+                <a data-toggle="modal" data-target="#wedding3" class="mix-cover">
+                  <img class="horizontal" src="img/S&A_b.jpg" alt="placeholder">
+                  <span class="overlay"><span class="valign"></span><span class="title">Selma & Anh-Kiet</span></span>
+                </a>
+            </li>
+            <li class="col-md-4 col-sm-4 col-xs-12 mix wedding" data-cat="portraits">
+                <a data-toggle="modal" data-target="#wedding4" class="mix-cover">
+                  <img class="horizontal" src="img/N&D_b.jpg" alt="placeholder">
+                  <span class="overlay"><span class="valign"></span><span class="title">Nidia & Denny</span></span>
+                </a>
+            </li>
+        <li class="col-md-4 col-sm-4 col-xs-12 mix wedding" data-cat="portraits">
+                <a data-toggle="modal" data-target="#wedding5" class="mix-cover">
+                  <img class="horizontal" src="img/L&J_b.jpg" alt="placeholder">
+                   <span class="overlay"><span class="valign"></span><span class="title">Loredana & Jordan</span></span>
+                </a>
+            </li>
+        <li class="col-md-4 col-sm-4 col-xs-12 mix wedding" data-cat="nature">
+                <a data-toggle="modal" data-target="#wedding6" class="mix-cover">
+                  <img class="horizontal" src="img/J&P_b.jpg" alt="placeholder">
+                  <span class="overlay"><span class="valign"></span><span class="title">Jenny & Philippe</span></span>
+                </a>
+            </li>
+            <li class="col-md-4 col-sm-4 col-xs-12 mix wedding" data-cat="portrait">
+                <a data-toggle="modal" data-target="#wedding7" class="mix-cover green">
+                  <img class="vertical" src="img/I&M_b.jpg" alt="portrait 4">
+                  <span class="overlay"><span class="valign"></span><span class="title">Iris & Marco</span></span>           
+                </a>
+            </li>
+        <li class="col-md-4 col-sm-4 col-xs-12 mix promo" data-cat="portrait">
+                <a data-toggle="modal" data-target="#promo1" class="mix-cover green">
+                  <img class="vertical" src="img/SBP_b.jpg" alt="Forest">
+                   <span class="overlay"><span class="valign"></span><span class="title">Star Boutique Party 2017</span></span>                    
+                </a>
+            </li>
+        <li class="col-md-4 col-sm-4 col-xs-12 mix promo" data-cat="bw">
+                <a data-toggle="modal" data-target="#promo2" class="mix-cover green">
+                  <img class="vertical" src="img/Pr2_b.jpg" alt="Black and White">
+                   <span class="overlay"><span class="valign"></span><span class="title">Maj 2018</span></span>                  
+                </a>
+            </li>
+        <li class="col-md-4 col-sm-4 col-xs-12 mix promo" data-cat="bw">
+                <a data-toggle="modal" data-target="#promo3" class="mix-cover green">
+                  <img class="vertical" src="img/LH_b.jpg" alt="Black and White">
+                   <span class="overlay"><span class="valign"></span><span class="title">LIV Hotel</span></span>                  
+                </a>
+            </li>
+            <li class="col-md-4 col-sm-4 col-xs-12 mix birthday" data-cat="bw">
+                <a data-toggle="modal" data-target="#birthday1" class="mix-cover green">
+                  <img class="vertical" src="img/Br1_b.jpg" alt="Black and White">
+                   <span class="overlay"><span class="valign"></span><span class="title">Rachel’s Quinceanera</span></span>                  
+                </a>
+            </li>
+            <li class="col-md-4 col-sm-4 col-xs-12 mix birthday" data-cat="bw">
+                <a data-toggle="modal" data-target="#birthday2" class="mix-cover green">
+                  <img class="vertical" src="img/Br2_b.jpg" alt="Black and White">
+                   <span class="overlay"><span class="valign"></span><span class="title">Issayana’s Sweet 16</span></span>                  
+                </a>
+            </li>
+            <li class="col-md-4 col-sm-4 col-xs-12 mix wedding" data-cat="bw">
+                <a data-toggle="modal" data-target="#short1" class="mix-cover green">
+                  <img class="vertical" src="img/Sh1_b.jpg" alt="Black and White">
+                   <span class="overlay"><span class="valign"></span><span class="title">Iris & Marco (Short)</span></span>                  
+                </a>
+            </li>
+            <li class="col-md-4 col-sm-4 col-xs-12 mix wedding" data-cat="bw">
+                <a data-toggle="modal" data-target="#short2" class="mix-cover green">
+                  <img class="vertical" src="img/Sh2_b.jpg" alt="Black and White">
+                   <span class="overlay"><span class="valign"></span><span class="title">Jenny & Philippe (Short)</span></span>                  
+                </a>
+            </li>
+            <li class="col-md-4 col-sm-4 col-xs-12 mix wedding" data-cat="bw">
+                <a data-toggle="modal" data-target="#short3" class="mix-cover green">
+                  <img class="vertical" src="img/Sh3_b.jpg" alt="Black and White">
+                   <span class="overlay"><span class="valign"></span><span class="title">Loredana & Jordan (Short)</span></span>                  
+                </a>
+            </li>          
+    </ul>   
+        
+
+<!-- Load Photo in Modal -->        
+  <div class="modal fade" id="wedding1" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+       <!-- <iframe class="thumbnail" width="560" height="349" src="https://www.youtube.com/embed/UaPAWiFtLi8" frameborder="0" allowfullscreen="true"></iframe> -->
+       <iframe class="thumbnail_v" width="560" height="349" src="http://player.vimeo.com/video/301637062" frameborder="0" allowfullscreen="true"></iframe>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+  <div class="modal fade" id="wedding2" tabindex="-1" role="dialog"  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+       <iframe class="thumbnail_v" width="560" height="349" src="http://player.vimeo.com/video/300281167" frameborder="0" allowfullscreen="true"></iframe>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="wedding3" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+       <iframe class="thumbnail_v" width="560" height="349" src="http://player.vimeo.com/video/292358892" frameborder="0" allowfullscreen="true"></iframe>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="wedding4" tabindex="-1" role="dialog"  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+       <iframe class="thumbnail_v" width="560" height="349" src="http://player.vimeo.com/video/297072156" frameborder="0" allowfullscreen="true"></iframe>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="wedding5" tabindex="-1" role="dialog"  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+       <iframe class="thumbnail_v" width="560" height="349" src="http://player.vimeo.com/video/293927516" frameborder="0" allowfullscreen="true"></iframe>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="wedding6" tabindex="-1" role="dialog"  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+       <iframe class="thumbnail_v" width="560" height="349" src="http://player.vimeo.com/video/292358294" frameborder="0" allowfullscreen="true"></iframe>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="wedding7" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+       <iframe class="thumbnail_v" width="560" height="349" src="http://player.vimeo.com/video/293927463" frameborder="0" allowfullscreen="true"></iframe>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="promo1" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+       <!-- <iframe class="thumbnail" width="560" height="349" src="https://drive.google.com/file/d/1iGZGU7jKhpNyMmTWh2ztUgTfUnM9uUxg/preview" frameborder="0" allowfullscreen="true"></iframe> -->
+       <iframe class="thumbnail_v" width="560" height="349" src="http://player.vimeo.com/video/297559553" frameborder="0" allowfullscreen="true"></iframe>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="promo2" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+       <iframe class="thumbnail_v" width="560" height="349" src="http://player.vimeo.com/video/297072504" frameborder="0" allowfullscreen="true"></iframe>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="promo3" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+       <!-- <iframe class="thumbnail" width="560" height="349" src="https://drive.google.com/file/d/1iGZGU7jKhpNyMmTWh2ztUgTfUnM9uUxg/preview" frameborder="0" allowfullscreen="true"></iframe> -->
+       <iframe class="thumbnail_v" width="560" height="349" src="http://player.vimeo.com/video/366315403" frameborder="0" allowfullscreen="true"></iframe>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="birthday1" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+       <!-- <iframe class="thumbnail" width="560" height="349" src="https://drive.google.com/file/d/1iGZGU7jKhpNyMmTWh2ztUgTfUnM9uUxg/preview" frameborder="0" allowfullscreen="true"></iframe> -->
+       <iframe class="thumbnail_v" width="560" height="349" src="http://player.vimeo.com/video/299429758" frameborder="0" allowfullscreen="true"></iframe>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="birthday2" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+       <!-- <iframe class="thumbnail" width="560" height="349" src="https://drive.google.com/file/d/1iGZGU7jKhpNyMmTWh2ztUgTfUnM9uUxg/preview" frameborder="0" allowfullscreen="true"></iframe> -->
+       <iframe class="thumbnail_v" width="560" height="349" src="http://player.vimeo.com/video/297559465" frameborder="0" allowfullscreen="true"></iframe>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="short1" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+       <iframe class="thumbnail" width="560" height="349" src="https://drive.google.com/file/d/1Oq1inOCrz-TBUC1JIZYALlmw9KVvNIDI/preview" frameborder="0" allowfullscreen="true"></iframe>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="short2" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+       <iframe class="thumbnail" width="560" height="349" src="https://drive.google.com/file/d/1sPLu-7vTXvt2uEZcPTpYcCwjefY6oHZX/preview" frameborder="0" allowfullscreen="true"></iframe>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="short3" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+       <iframe class="thumbnail" width="560" height="349" src="https://drive.google.com/file/d/1BAy0716UlQx5HR8CvrRxT7laB8Y1TiJH/preview" frameborder="0" allowfullscreen="true"></iframe>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- /Load Photo in Modal --> 
+    </div>  
+      </div>
+    </div>
+      </div>
+    <!-- /Portfolio -->
+
+
+
+
+
+   
+    
+
+
+<!-- Services -->
+    <div id="services" class="services">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-md-offset-4 text-center">
+            <h2>Our Services</h2>
+            <hr>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 text-center">
+            <div class="service-item">
+              <i class="service-icon fa fa-camera fa-3x"></i>
+              <h3>Cut and stitch footage</h3>
+              <p>We remove useless parts of your video clips and stitch different footages to create one full movie. Small video retouching, transitions, adding effects, color grading, adding slowmo and timelapse, background loop, etc. are applied to get attractive and engaging videos. We provide all types of video editing and retouching services. </p>
+            </div>
+          </div>
+          <div class="col-md-4 text-center">
+            <div class="service-item">
+              <i class="service-icon fa fa-camera fa-3x"></i>
+              <h3>Add subtitle</h3>
+              <p>Subtitle in video is a vital part. It increases the acceptance of that particular video to all. Subtitle helps those who do not understand speaker’s word by listening. It is a modern trend to add video subtitle in the lower part. Educating videos, movie clips, corporate presentation clips, etc. usually take video subtitle and we offer this service.</p>
+            </div>
+          </div>
+          <div class="col-md-4 text-center">
+            <div class="service-item">
+              <i class="service-icon fa fa-camera fa-3x"></i>
+              <h3>Audio correction</h3>
+              <p>Audio is a part and parcel of video. Without audio, can you appreciate a video? But sometimes audio gets various noises that ruin the quality of audio and also videos. Noise destroys the purpose of adding audio in a video. We have been providing audio correction or noise reduction service professionally using latest technologies.</p>
+            </div>
+          </div>
+          <div class="col-md-4 text-center">
+            <div class="service-item">
+              <i class="service-icon fa fa-camera fa-3x"></i>
+              <h3>Add Effect on videos</h3>
+              <p>Various types of effects like blur & sharpen, gradient ramp, noise & grain, black & white, sparks, zooming, optical flares, reflection, etc. are applied for creating special charm in to the videos. We add high end VFX in the videos. We have experienced video editing team and latest tools for creating these effects.</p>
+            </div>
+          </div>
+          <div class="col-md-4 text-center">
+            <div class="service-item">
+              <i class="service-icon fa fa-camera fa-3x"></i>
+              <h3>Audio sync with video</h3>
+              <p>Sometimes the movie makers shoot video without sound and later they add sound produced from different studio for better sound quality. Then our video editors sync audio sound with speakers’ lip properly. To do that we use Adobe Audition. Sometimes we utilize AfterEffect for adding extra effects.</p>
+            </div>
+          </div>
+          <div class="col-md-4 text-center">
+            <div class="service-item">
+              <i class="service-icon fa fa-camera fa-3x"></i>
+              <h3>Video Color correction</h3>
+              <p>Color grading, video color correction, color enhancement improve the video quality. Our video editing team edits video utilizing Adobe Premiere pro and Final Cut Pro. The purpose of video color correction is to fix black shedding, highlighting, mid tone, color balance, tint, over or under exposure, etc.</p>
+            </div>
+          </div> 
+        </div>
+      </div>
+    </div>
+    <!-- /Services -->
+
+
+ <!-- About -->
+    <div id="about" class="about_us">
+     <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 text-center">
+            <h2>About Us</h2>
+            <p class="lead">GK Studio produces weddings, commercials, music videos and documentaries films.
+We create and oversee all aspects of pre-production, production, and post-production on any number of projects.<br /><br />
+Founded in 2012, GK Studio is a post-production company based in Minsk, Belarus. Providing essential post-production services for videographers and cinematography studios. It was created to create beautiful stories.<br /><br />
+GK Studio has been imagining visual effects and animation for the feature film, television, and advertising industries. From the beginning we’ve always maintained an artist-centric approach, placing our talented and highly passionate team at the center of everything that we do. We also subscribe to the principle that great work should be comprised of equal parts form and function. Every sequence, every shot, and every frame has a story to tell and a message to convey.<br /><br />
+We feel tremendously fortunate to do what we do with deep-rooted curiosity and enthusiasm as we look towards opportunities to learn, to grow and to innovate.<br /><br />
+With a perfect blend of artistic diversity and technological integration, GK Studio provides its clients with innovative solutions and exceptional storytelling. We bring the final vision to life for any screen.<br /><br />
+We give so much respect and adoration to every film we make. We would be so honored to be apart of creating your videos</p>
+          </div>
+        </div>
+    </div>
+    </div>
+    <!-- /About -->
+
+
+
+
+
+
+<!-- 3-Step -->
+    <div id="services" class="services">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-md-offset-4 text-center">
+            <h2>Our 3-Step Approach for Spellbinding Videos</h2>
+            <hr>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 text-center">
+            <div class="service-item">
+              <i class="service-icon fa fa-camera-retro fa-3x"></i>
+              <h3>Step 1</h3>
+              <p>Send us your raw data, digital files, or VHS/other legacy storage tapes, etc. </p>
+            </div>
+          </div>
+          <div class="col-md-4 text-center">
+            <div class="service-item">
+      <i class="service-icon fa fa-camera-retro fa-3x"></i>
+              <h3>Step 2</h3>
+              <p>Choose our service or a combination of it, or you can even ask for a specific or a customized service</p>
+            </div>
+          </div>
+          <div class="col-md-4 text-center">
+            <div class="service-item">
+              <i class="service-icon fa fa-camera-retro fa-3x"></i>
+              <h3>Step 3</h3>
+              <p>Get completely edited and enhanced videos that based on your creative ideas & brief</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /3-Step -->
+
+
+
+
+
+   
+
+    
+    <!-- Contact -->
+    <div id="contact">
+      <div class="container">
+        <div class="row">
+		<div class="col-md-4 col-md-offset-4 text-center">
+            <h2>Contact Us</h2>
+			<hr>
+          </div>
+          <div class="col-md-5 col-md-offset-3">
+		  <!-- contact form starts -->
+            <form action="contact.php" method="post" id="contact-form" class="form-horizontal">
+			<fieldset>
+						    <div class="form-group">
+						      <label class="col-sm-4 control-label" for="name">Your Name</label>
+						      <div class="col-sm-8">
+						        <input type="text"  placeholder="Your Name" class="form-control" name="name" id="name">
+						      </div>
+						    </div>
+						    <div class="form-group">
+						      <label class="col-sm-4 control-label" for="email">Email Address</label>
+						      <div class="col-sm-8">
+						        <input type="text" placeholder="Enter Your Email Address" class="form-control" name="email" id="email">
+						      </div>
+						    </div>
+						    <div class="form-group">
+						      <label class="col-sm-4 control-label" for="subject">Subject</label>
+						      <div class="col-sm-8">
+						        <input type="text" placeholder="Subject" class="form-control" name="subject" id="subject">
+						      </div>
+						    </div>
+						    <div class="form-group">
+						      <label class="col-sm-4 control-label" for="message">Your Message</label>
+						      <div class="col-sm-8">
+						        <textarea placeholder="Please Type Your Message" class="form-control" name="message" id="message" rows="3"></textarea>
+						      </div>
+						    </div>
+
+                    <div class="popup" style="display:none;">
+                      <div class="popup-title">Thank you for your message!</div>
+                        <div class="popup-form">We will get back to you as soon as possible.
+                        <!-- <span>Вы оставили заявку, с вами свяжется наш специалист в ближайшее время!</span> -->
+                      </div>
+                    </div><!-- /Mail sent-->
+
+	              <div class="col-sm-offset-4 col-sm-8">
+			            <button type="submit" class="btn btn-success">Submit</button>
+	    			      <button type="reset" class="btn btn-primary">Cancel</button>
+	        			</div>
+						</fieldset>
+						</form>
+				
+				<!-- contact form ends -->		
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Contact -->
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3 text-center">
+           <h2>Thank You For Visiting</h2>
+           <em>gk.videoedit@gmail.com <br />Copyright &copy; GK Studio 2012-2021</em>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- /Footer -->
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  
+    <script src="js/opacity.js"></script>
+	<script src="js/jquery-scrolltofixed-min.js"></script>
+	<script src="js/jquery.mixitup.min.js"></script>
+	<script src="js/jquery.validate.min.js"></script>
+	<script src="js/script.js"></script>
+	<script src="js/bootstrap.js"></script>
+	
+<!-- Slideshow Background  -->
+<script>
+$("body").vegas({
+    delay: 10000,
+    timer: false,
+    firstTransition: 'fade',
+    firstTransitionDuration: 2000,
+    transitionDuration: 4000,
+    slides: [
+        { src: "img/1.jpg" },
+        { src: "img/2.jpg" },
+        { src: "img/3.jpg" },
+        { src: "img/4.jpg" },
+        { src: "img/6.jpg" },
+        { src: "img/7.jpg" }
+    ],
+    animation: 'random',
+    // overlay: 'img/overlays/08.png'
+});
+</script>
+<!-- /Slideshow Background -->
+
+<!-- Mixitup : Grid -->
+    <script>
+		$(function(){
+    $('#Grid').mixitup();
+      });
+    </script>
+<!-- /Mixitup : Grid -->	
+
+    <!-- Custom JavaScript for Smooth Scrolling - Put in a custom JavaScript file to clean this up -->
+    <script>
+      $(function() {
+        $('a[href*=#]:not([href=#])').click(function() {
+          if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+            || location.hostname == this.hostname) {
+
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+            if (target.length) {
+              $('html,body').animate({
+                scrollTop: target.offset().top
+              }, 1000);
+              return false;
+            }
+          }
+        });
+      });
+    </script>
+<!-- Navbar -->
+<script type="text/javascript">
+$(document).ready(function() {
+        $('#nav').scrollToFixed();
+  });
+    </script>
+<!-- /Navbar-->
+	
+  </body>
+
+</html>
